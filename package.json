@@ -1,0 +1,22 @@
+{
+    "name": "@gladiolus/mime",
+    "author": "lopo<lopo@zju.edu.cn>",
+    "description": "determining the MIME type for a file",
+    "license": "MIT",
+    "packageManager": "yarn@3.6.4",
+    "scripts": {
+        "build": "tsup src/index.ts"
+    },
+    "main": "./dist/index.js",
+    "module": "./dist/index.mjs",
+    "exports": {
+        "default": "./dist/index.cjs",
+        "require": "./dist/index.cjs",
+        "node": "./dist/index.cjs",
+        "import": "./dist/index.mjs"
+    },
+    "devDependencies": {
+        "tsup": "^7.2.0",
+        "typescript": "^5.2.2"
+    }
+}
