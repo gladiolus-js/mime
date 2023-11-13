@@ -1,7 +1,7 @@
 /**
  * extension => mime type
  */
-const ExtMap = {
+const ExtMap: { [k: string]: string } = {
     '123': 'application/vnd.lotus-1-2-3',
     '3dml': 'text/vnd.in3d.3dml',
     '3ds': 'image/x-3ds',
@@ -1010,4 +1010,10 @@ const ExtMap = {
     'zmm': 'application/vnd.handheld-entertainment+xml',
 };
 
-export { ExtMap }
+function findMimeByExtension(filename: string): string | null {
+    const ext = filename.split('.').pop();
+    if(!ext) return null;
+    return ExtMap[ext] ?? null
+}
+
+export { findMimeByExtension }
