@@ -1,0 +1,33 @@
+import test from "ava";
+import { findMime } from "../dist/index.mjs"
+
+test('get mime from file extension', t => {
+    t.plan(26)
+
+    t.is(findMime('a.ico'), 'image/x-icon')
+    t.is(findMime('b.jpg'), 'image/jpeg')
+    t.is(findMime('c.png'), 'image/png')
+    t.is(findMime('d.txt'), 'text/plain')
+    t.is(findMime('e.js'), 'text/javascript')
+    t.is(findMime('f.dart'), 'text/x-dart')
+    t.is(findMime('g.css'), 'text/css')
+    t.is(findMime('h.html'), 'text/html')
+    t.is(findMime('i.json'), 'application/json')
+    t.is(findMime('j.xml'), 'application/xml')
+    t.is(findMime('k.svg'), 'image/svg+xml')
+    t.is(findMime('l.pdf'), 'application/pdf')
+    t.is(findMime('m.zip'), 'application/zip')
+    t.is(findMime('n.tar'), 'application/x-tar')
+    t.is(findMime('o.rar'), 'application/x-rar-compressed')
+    t.is(findMime('p.7z'), 'application/x-7z-compressed')
+    t.is(findMime('q.mp4'), 'video/mp4')
+    t.is(findMime('r.mp3'), 'audio/mpeg')
+    t.is(findMime('s.flac'), 'audio/x-flac')
+    t.is(findMime('t.doc'), 'application/msword')
+    t.is(findMime('u.xls'), 'application/vnd.ms-excel')
+    t.is(findMime('v.ppt'), 'application/vnd.ms-powerpoint')
+    t.is(findMime('w.exe'), 'application/x-msdownload')
+    t.is(findMime('x.dll'), 'application/x-msdownload')
+    t.is(findMime('y.class'), 'application/java-vm')
+    t.is(findMime('z.jar'), 'application/java-archive')
+})
