@@ -120,9 +120,26 @@ const magicSet: Set<MimeBeginBytes> = new Set<MimeBeginBytes>([
     new MimeBeginBytes('model/gltf-binary', [ 0x46, 0x54, 0x6C, 0x67 ]),
 ])
 
-function findMimeByBeginBytes(bytes: number[]): string | null {
+/**
+ * Any type that can be converted into `number[]`
+ */
+export type ToBeginBytes = ArrayLike<number> | Iterable<number>
+
+function arrayGuard(array: ToBeginBytes): number[] {
+    return Array.from(array, (v, idx) => {
+        // since this is ts, we must check the type of each element
+        if(typeof v !== 'number') {
+            throw new TypeError(`begin bytes must be number[], but got ${ typeof v } at index ${ idx }`)
+        }
+        return v
+    })
+}
+
+function findMimeByBeginBytes(bytes: ToBeginBytes): string | null {
+    const flattenBytes = arrayGuard(bytes)
+
     for (const magic of magicSet) {
-        if(magic.match(bytes)) return magic.mime
+        if(magic.match(flattenBytes)) return magic.mime
     }
 
     return null
