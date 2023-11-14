@@ -16,7 +16,6 @@
     },
     "include": [
         "src/**/*.ts",
-        "tsup.config.ts",
-        "__test__/**/*.ts",
+        "tsup.config.ts"
     ]
 }
