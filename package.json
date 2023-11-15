@@ -1,5 +1,6 @@
 {
     "name": "@gladiolus/mime",
+    "version": "0.1.0",
     "author": "lopo<lopo@zju.edu.cn>",
     "description": "determining the MIME type for a file",
     "license": "MIT",
